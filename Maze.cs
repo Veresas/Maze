@@ -31,13 +31,13 @@ namespace Maze_game
         /// </summary>
         /// <param name="heightMaze"></param>
         /// <param name="widhtMaze"></param>
-        public Maze(int heightMaze, int widhtMaze)
+        public Maze(int heightMaze, int widthMaze)
         {
 
             this.heightMaze = heightMaze;
-            this.widthMaze = widhtMaze;
-            maze = new char[heightMaze, widhtMaze];
-            generateMaze(heightMaze, widhtMaze);
+            this.widthMaze = widthMaze;
+            maze = new char[heightMaze, widthMaze];
+            generateMaze(heightMaze, widthMaze);
         }
 
         /// <summary>
@@ -62,7 +62,10 @@ namespace Maze_game
                     {
                         maze[i, j] = '█';
                     }
-                    else maze[i, j] = ' ';
+                    else
+                    {
+                        maze[i, j] = ' ';
+                    }
                 }
             }
 
@@ -93,8 +96,15 @@ namespace Maze_game
 
             while (IsContinue)
             {
-                if (countRepet < 3) random_number = rand.Next(1, 3);
-                else random_number = rand.Next(1, 5);
+                if (countRepet < 3)
+                {
+                    random_number = rand.Next(1, 3);
+                }
+                else
+                {
+                    random_number = rand.Next(1, 5);
+                }
+
                 countRepet++;
                 switch (random_number)
                 {
@@ -123,7 +133,10 @@ namespace Maze_game
             int storei = 0;
             for (int i = startX; i < startX + 5; i++)
             {
-                if (i < widthMaze - 1) maze[startY, i] = ' ';
+                if (i < widthMaze - 1)
+                {
+                    maze[startY, i] = ' ';
+                }
                 else
                 {
                     maze[startY, i - 1] = 'f';
@@ -140,7 +153,10 @@ namespace Maze_game
             int storei = 0;
             for (int i = startX; i > startX - 2; i--)
             {
-                if (i > 0) maze[startY, i] = ' ';
+                if (i > 0)
+                {
+                    maze[startY, i] = ' ';
+                }
                 else
                 {
                     maze[startY, i + 1] = 'f';
@@ -157,7 +173,10 @@ namespace Maze_game
             int storei = 0;
             for (int i = startY; i < startY + 3; i++)
             {
-                if (i < heightMaze - 1) maze[i, startX] = ' ';
+                if (i < heightMaze - 1)
+                {
+                    maze[i, startX] = ' ';
+                }
                 else
                 {
                     maze[i - 1, startX] = 'f';
@@ -174,7 +193,10 @@ namespace Maze_game
             int storei = 0;
             for (int i = startY; i > startY - 2; i--)
             {
-                if (i > 0) maze[i, startX] = ' ';
+                if (i > 0)
+                {
+                    maze[i, startX] = ' ';
+                }
                 else
                 {
                     maze[i + 1, startX] = 'f';
@@ -200,24 +222,52 @@ namespace Maze_game
             {
                 case 1:
 
-                    if (maze[x, y - 1] == 'f') win();
-                    else if (maze[x, y - 1] == ' ') player.goLeft();
+                    if (maze[x, y - 1] == 'f')
+                    {
+                        win();
+                    }
+                    else if (maze[x, y - 1] == ' ')
+                    {
+                        player.goLeft();
+                    }
+
                     break;
 
                 case 2:
 
-                    if (maze[x - 1, y] == 'f') win();
-                    else if (maze[x - 1, y] == ' ') player.goUp();
+                    if (maze[x - 1, y] == 'f')
+                    {
+                        win();
+                    }
+                    else if (maze[x - 1, y] == ' ')
+                    {
+                        player.goUp();
+                    }
+
                     break;
 
                 case 3:
-                    if (maze[x, y + 1] == 'f') win();
-                    else if (maze[x, y + 1] == ' ') player.goRight();
+                    if (maze[x, y + 1] == 'f')
+                    {
+                        win();
+                    }
+                    else if (maze[x, y + 1] == ' ')
+                    {
+                        player.goRight();
+                    }
+
                     break;
 
                 case 4:
-                    if (maze[x + 1, y] == 'f') win();
-                    else if (maze[x + 1, y] == ' ') player.goDown();
+                    if (maze[x + 1, y] == 'f')
+                    {
+                        win();
+                    }
+                    else if (maze[x + 1, y] == ' ')
+                    {
+                        player.goDown();
+                    }
+
                     break;
 
                 default:
