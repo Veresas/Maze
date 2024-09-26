@@ -14,8 +14,8 @@ namespace Maze_game
     /// <remarks> Класс представляющий собой лабиринт</remarks>
     internal class Maze
     {
-        private int widthMaze;
-        private int heightMaze;
+        private int width;
+        private int height;
         private char[,] maze;
         /// <summary>
         /// end game marker
@@ -34,10 +34,10 @@ namespace Maze_game
         public Maze(int heightMaze, int widthMaze)
         {
 
-            this.heightMaze = heightMaze;
-            this.widthMaze = widthMaze;
+            height = heightMaze;
+            width = widthMaze;
             maze = new char[heightMaze, widthMaze];
-            generateMaze(heightMaze, widthMaze);
+            GenerateMaze(heightMaze, widthMaze);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Maze_game
         /// <remarks> Создает глвные стены и визуальный шум</remarks>
         /// <param name="widthMaze"></param>
         /// <param name="heightMaze"></param>
-        private void generateMaze(int widthMaze, int heightMaze)
+        private void GenerateMaze(int widthMaze, int heightMaze)
         {
             Random rand = new Random();
             int random_number;
@@ -76,14 +76,14 @@ namespace Maze_game
                 maze[widthMaze - 1, j] = '█';
             }
 
-            addRooms();
+            AddRooms();
         }
 
         /// <summary>
         /// Generat main road to end
         /// </summary>
         /// <remarks>Создает основную дорогу к победе, путем присоеденения к концу одного коридора следующий коридор</remarks>
-        private void addRooms()
+        private void AddRooms()
         {
             Random rand = new Random();
             int random_number;
@@ -109,18 +109,18 @@ namespace Maze_game
                 switch (random_number)
                 {
                     case 1:
-                        IsContinue = addHallveyRightSide(ref startX, ref startY);
+                        IsContinue = AddHallveyRightSide(ref startX, ref startY);
                         continue;
 
                     case 2:
-                        IsContinue = addhallveyDown(ref startX, ref startY);
+                        IsContinue = AddhallveyDown(ref startX, ref startY);
                         continue;
 
                     case 3:
-                        IsContinue = addHallveyLeftSide(ref startX, ref startY);
+                        IsContinue = AddHallveyLeftSide(ref startX, ref startY);
                         continue;
                     case 4:
-                        IsContinue = addhallveyUp(ref startX, ref startY);
+                        IsContinue = AddhallveyUp(ref startX, ref startY);
                         continue;
                 }
             }
@@ -128,12 +128,12 @@ namespace Maze_game
 
         }
 
-        private bool addHallveyRightSide(ref int startX, ref int startY)
+        private bool AddHallveyRightSide(ref int startX, ref int startY)
         {
             int storei = 0;
             for (int i = startX; i < startX + 5; i++)
             {
-                if (i < widthMaze - 1)
+                if (i < width - 1)
                 {
                     maze[startY, i] = ' ';
                 }
@@ -148,7 +148,7 @@ namespace Maze_game
             return true;
         }
 
-        private bool addHallveyLeftSide(ref int startX, ref int startY)
+        private bool AddHallveyLeftSide(ref int startX, ref int startY)
         {
             int storei = 0;
             for (int i = startX; i > startX - 2; i--)
@@ -168,12 +168,12 @@ namespace Maze_game
             return true;
         }
 
-        private bool addhallveyDown(ref int startX, ref int startY)
+        private bool AddhallveyDown(ref int startX, ref int startY)
         {
             int storei = 0;
             for (int i = startY; i < startY + 3; i++)
             {
-                if (i < heightMaze - 1)
+                if (i < height - 1)
                 {
                     maze[i, startX] = ' ';
                 }
@@ -188,7 +188,7 @@ namespace Maze_game
             return true;
         }
 
-        private bool addhallveyUp(ref int startX, ref int startY)
+        private bool AddhallveyUp(ref int startX, ref int startY)
         {
             int storei = 0;
             for (int i = startY; i > startY - 2; i--)
@@ -212,10 +212,10 @@ namespace Maze_game
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public bool chekCollision(int code)
+        public bool ChekCollision(int code)
         {
-            int x = player.GetX();
-            int y = player.GetY();
+            int x = player.PosX;
+            int y = player.PosY;
 
             maze[x, y] = ' ';
             switch (code)
@@ -224,11 +224,11 @@ namespace Maze_game
 
                     if (maze[x, y - 1] == 'f')
                     {
-                        win();
+                        Win();
                     }
                     else if (maze[x, y - 1] == ' ')
                     {
-                        player.goLeft();
+                        player.GoLeft();
                     }
 
                     break;
@@ -237,11 +237,11 @@ namespace Maze_game
 
                     if (maze[x - 1, y] == 'f')
                     {
-                        win();
+                        Win();
                     }
                     else if (maze[x - 1, y] == ' ')
                     {
-                        player.goUp();
+                        player.GoUp();
                     }
 
                     break;
@@ -249,11 +249,11 @@ namespace Maze_game
                 case 3:
                     if (maze[x, y + 1] == 'f')
                     {
-                        win();
+                        Win();
                     }
                     else if (maze[x, y + 1] == ' ')
                     {
-                        player.goRight();
+                        player.GoRight();
                     }
 
                     break;
@@ -261,11 +261,11 @@ namespace Maze_game
                 case 4:
                     if (maze[x + 1, y] == 'f')
                     {
-                        win();
+                        Win();
                     }
                     else if (maze[x + 1, y] == ' ')
                     {
-                        player.goDown();
+                        player.GoDown();
                     }
 
                     break;
@@ -276,27 +276,27 @@ namespace Maze_game
             return true;
         }
 
-        private void win()
+        private void Win()
         {
             Console.WriteLine("Победа");
             isEnd = true;
         }
-        public bool chekIsEnd()
+        public bool ChekIsEnd()
         {
             return isEnd;
         }
 
 
-        public void dispalyMaze(int codeMove)
+        public void DispalyMaze(int codeMove)
         {
             Console.Clear();
 
-            chekCollision(codeMove);
-            maze[player.GetX(), player.GetY()] = player.GetBody();
+            ChekCollision(codeMove);
+            maze[player.PosX, player.PosY] = player.Body;
 
-            for (int i = 0; i < heightMaze; i++)
+            for (int i = 0; i < height; i++)
             {
-                for (int j = 0; j < widthMaze; j++)
+                for (int j = 0; j < width; j++)
                 {
                     Console.Write(maze[i, j]);
                 }
