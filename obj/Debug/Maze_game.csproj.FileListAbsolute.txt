@@ -1,7 +1,0 @@
-D:\Иструмнеталки\Maze_game\bin\Debug\Maze_game.exe.config
-D:\Иструмнеталки\Maze_game\bin\Debug\Maze_game.exe
-D:\Иструмнеталки\Maze_game\bin\Debug\Maze_game.pdb
-D:\Иструмнеталки\Maze_game\obj\Debug\Maze_game.csproj.AssemblyReference.cache
-D:\Иструмнеталки\Maze_game\obj\Debug\Maze_game.csproj.CoreCompileInputs.cache
-D:\Иструмнеталки\Maze_game\obj\Debug\Maze_game.exe
-D:\Иструмнеталки\Maze_game\obj\Debug\Maze_game.pdb
