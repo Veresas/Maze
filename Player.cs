@@ -12,47 +12,33 @@ namespace Maze_game
     /// <remarks> Класс представляющий собой игрока</remarks>
     internal class Player
     {
-        private int posX;
-        private int posY;
-        private char body = '$';
+        public int PosX { get; private set; }
+        public int PosY { get; private set; }
+        public char Body { get; private set; }
 
         public Player(int x, int y)
         {
-            posY = y;
-            posX = x;
+            PosY = y;
+            PosX = x;
+            Body = '&';
         }
 
-        public void goUp()
+        public void GoUp()
         {
-            posX--;
+            PosX--;
         }
 
-        public void goDown()
+        public void GoDown()
         {
-            posX++;
+            PosX++;
         }
-        public void goLeft()
+        public void GoLeft()
         {
-            posY--;
+            PosY--;
         }
-        public void goRight()
+        public void GoRight()
         {
-            posY++;
-        }
-
-        public int GetX()
-        {
-            return posX;
-        }
-
-        public int GetY()
-        {
-            return posY;
-        }
-
-        public char GetBody()
-        {
-            return body;
+            PosY++;
         }
     }
 }

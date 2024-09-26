@@ -12,24 +12,24 @@ namespace Maze_game
         {
             Maze maze = new Maze(20, 50);
             ConsoleKeyInfo lastPressedKey = new ConsoleKeyInfo();
-            maze.dispalyMaze(0);
-            while (!maze.chekIsEnd())
+            maze.DispalyMaze(0);
+            while (!maze.ChekIsEnd())
             {
                 lastPressedKey = Console.ReadKey(true);
                 switch (lastPressedKey.Key)
                 {
                     case ConsoleKey.LeftArrow:
-                        maze.dispalyMaze(1);
+                        maze.DispalyMaze(1);
                         break;
                     case ConsoleKey.UpArrow:
-                        maze.dispalyMaze(2);
+                        maze.DispalyMaze(2);
                         break;
                     case ConsoleKey.RightArrow:
-                        maze.dispalyMaze(3);
+                        maze.DispalyMaze(3);
                         break;
 
                     case ConsoleKey.DownArrow:
-                        maze.dispalyMaze(4);
+                        maze.DispalyMaze(4);
                         break;
                     default:
                         break;
